@@ -31,10 +31,10 @@ Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확
 - FailureAnalyzer
 - 배너
 
-  - banner.txt | gif | jpg |.png
+  - `banner.txt | gif | jpg |.png`
   - classpath 또는 spring.banner.location
-  - \${spring-boot.version} 등의 변수를 사용할 수 있음.
-  - Banner 클래스 구현하고 SpringApplication.setBanner()로 설정 가능.
+  - `\${spring-boot.version}` 등의 변수를 사용할 수 있음.
+  - Banner 클래스 구현하고 `SpringApplication.setBanner()`로 설정 가능.
 
   ```java
   SpringApplication app = new SpringApplication(SpringinitApplication.class);
@@ -57,13 +57,13 @@ Tip) 자동 설정이 되지않을때나 궁금할때는 디버그를 보면 확
 
   ```
 
-https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-applicatio n.html#boot-features-application-events-and-listeners
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spring-application.html#boot-features-application-events-and-listeners
 
 - ApplicationEvent 등록
 
   - ApplicationContext를 만들기 전에 사용하는 리스너는 @Bean으로 등록할 수 없다.
 
-    - SpringApplication.addListners()
+    - `SpringApplication.addListners()
 
     ```java
     // SampleListner
@@ -79,14 +79,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-spr
 
     // Application
     @SpringBootApplication
-    public class Application {
-
-    ){
-    );
-    );
-    );
-     }
-    }
+    public class Application {}
     ```
 
     다음과 같이 작성시. Spring 이 빌드될 때 찍히는 거 볼 수 있다.
@@ -149,10 +142,12 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 
 > 위에 있는게 이김.
 
+```
 1. file:./config/
 2. file:./
 3. classpath:/config/
 4. classpath:/
+```
 
 랜덤값 설정하기
 
@@ -162,13 +157,14 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 
 > 인풋텍스트나 아레아 등에서 안내 문구를 삽입해 주는 기능 + 클릭하면 사라지는 아주 좋은 기능
 
-- name = keesun
-- fullName = \${name} baik
+- `name = keesun`
+- `fullName = \${name} baik`
 
 ### 타입-세이프 프로퍼티
 
 타입-세이프 프로퍼티 `@ConfigurationProperties`
 
+```
 - 여러 프로퍼티를 묶어서 읽어올 수 있음
 - 빈으로등록해서다른빈에주입할수있음
   - @EnableConfigurationProperties
@@ -188,6 +184,7 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 - @Value
   - SpEL 을 사용할 수 있지만...
   - 위에 있는 기능들은 전부 사용 못합니다.
+```
 
 ### 프로파일
 
@@ -195,11 +192,11 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
   - @Configuration
   - @Component
 - 어떤 프로파일을 활성화 할 것인가?
-  - spring.profiles.active
+  - `spring.profiles.active`
 - 어떤 프로파일을 추가할 것인가?
-  - spring.profiles.include
+  - `spring.profiles.include`
 - 프로파일용 프로퍼티
-  - application-{profile}.properties
+  - `application-{profile}.properties`
 
 <br />
 
@@ -209,22 +206,22 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 
 > 로깅 퍼사드의 장점은 로거를 자신들이 원하는 거를 사용할 수 있는 점
 
-- **Commons Logging**, SLF4j
-- JUL, Log4J2, **Logback** (최종적으로는 Logback으로 왔다.)
+- `**Commons Logging**, SLF4j`
+- `JUL, Log4J2, **Logback** (최종적으로는 Logback으로 왔다.)`
 
 스프링 5에 로거 관련 변경 사항
 
 - https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/overview.html#overview-logging
-- Spring-JCL
-  - Commons Logging -> SLF4j or Log4j2
+- `Spring-JCL`
+  - `Commons Logging -> SLF4j or Log4j2`
   - pom.xml에 exclusion 안해도 됨.
 
 스프링 부트 로깅
 
 - 기본 포맷
-- --debug (일부 핵심 라이브러리만 디버깅 모드로)
-- --trace (전부 다 디버깅 모드로)
-- 컬러 출력: spring.output.ansi.enabled
+- `--debug (일부 핵심 라이브러리만 디버깅 모드로)`
+- `--trace (전부 다 디버깅 모드로)`
+- 컬러 출력: `spring.output.ansi.enabled`
 - 파일 출력: logging.file 또는 logging.path
 - 로그 레벨 조정: logging.level.패지키 = 로그 레벨
 
@@ -232,11 +229,11 @@ application.properties 우선 순위 (높은게 낮은걸 덮어 씁니다.)
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html : 커스텀 로그 설정 파일 사용하기
 
-Logback: logback-spring.xml - 기본적으로는 이거 사용을 추천
+Logback: `logback-spring.xml` - 기본적으로는 이거 사용을 추천
 
-Log4J2: log4j2-spring.xml
+Log4J2: `log4j2-spring.xml`
 
-JUL (비추): logging.properties
+JUL (비추): `logging.properties`
 
 Logback extension
 
@@ -306,7 +303,7 @@ class SpringtestdemoApplicationTests {
 @MockBean
 
 - ApplicationContext에 들어있는 빈을 Mock으로 만든 객체로 교체 함.
-- 모든 @Test 마다 자동으로 리셋.
+- 모든 `@Test` 마다 자동으로 리셋.
 
 슬라이스 테스트
 
@@ -322,7 +319,7 @@ class SpringtestdemoApplicationTests {
 - **OutputCapture**
 
   - Log에 찍히는 모든 output를 캡쳐한다.
-  - ex) `assertThat(outputCapture.toString()).contains("holoman").contains("skip");`
+  - ex. `assertThat(outputCapture.toString()).contains("holoman").contains("skip");`
 
 - TestPropertyValues
 - TestRestTemplate
@@ -335,13 +332,13 @@ class SpringtestdemoApplicationTests {
   - 직접 껐다 켜는거 (cold starts)보다 빠른다. 왜?
     - class 로더를 2개를 사용해서...
   - 릴로딩 보다는 느리다. (JRebel 같은건 아님)
-  - 리스타트 하고 싶지 않은 리소스는? spring.devtools.restart.exclude
-  - 리스타트 기능 끄려면? spring.devtools.restart.enabled = false
+  - 리스타트 하고 싶지 않은 리소스는? `spring.devtools.restart.exclude`
+  - 리스타트 기능 끄려면? `spring.devtools.restart.enabled = false`
 - 라이브 릴로드? 리스타트 했을 때 브라우저 자동 리프레시 하는 기능
   - 브라우저 플러그인 설치해야 함.
-  - 라이브 릴로드 서버 끄려면? spring.devtools.liveload.enabled = false
+  - 라이브 릴로드 서버 끄려면? s`pring.devtools.liveload.enabled = false`
 - 글로벌 설정
-  - ~/.spring-boot-devtools.properties
+  - `~/.spring-boot-devtools.properties`
     - 1순위 외부 설정, 우선순위가 가장 높음
 - 리모트 애플리케이션
   - 원격에서 할 수 있는데. 추천은 안함(복잡함, 보안적 측면 문제)
