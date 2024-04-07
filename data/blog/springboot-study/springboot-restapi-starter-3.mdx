@@ -15,6 +15,7 @@ summary: " 'SpringBoot REST API'의 세번째 게시글입니다. "
 
 ### 스프링 HATEOAS
 
+```
 - https://docs.spring.io/spring-hateoas/docs/current/reference/html/
 - 링크 만드는 기능
   - 문자열 가지고 만들기
@@ -31,12 +32,15 @@ summary: " 'SpringBoot REST API'의 세번째 게시글입니다. "
     - profile
     - update-event
     - query-events
+```
 
+```html
 <img
   src="https://user-images.githubusercontent.com/42582516/93029741-704ef880-f658-11ea-8e27-81d626a05ed8.png"
   alt="image"
   style="zoom:30%;"
 />
+```
 
 <br />
 
@@ -44,10 +48,11 @@ summary: " 'SpringBoot REST API'의 세번째 게시글입니다. "
 
 ### EvnetResource 만들기
 
+```
 - extends ResourceSupport의 문제
   - @JsonUnwrapped로 해결
   - extends `Resource<T>`로 해결
-    `
+```
 
 ### 테스트 할 것
 
@@ -64,6 +69,7 @@ https://docs.spring.io/spring-restdocs/docs/2.0.2.RELEASE/reference/html5/
 
 ### REST Docs 코딩
 
+```
 - andDo(document(“doc-name”, snippets))
 - snippets
   - links()
@@ -82,6 +88,7 @@ https://docs.spring.io/spring-restdocs/docs/2.0.2.RELEASE/reference/html5/
   - preprocessRequest(prettyPrint())
   - preprocessResponse(prettyPrint())
   - ...
+```
 
 ### Constraint
 
@@ -93,17 +100,16 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
 
 ### REST Docs 자동 설정
 
-- @AutoConfigureRestDocs
+- `@AutoConfigureRestDocs`
 
 ### RestDocMockMvc 커스터마이징
 
 - RestDocsMockMvcConfigurationCustomizer 구현한 빈 등록
-- @TestConfiguration
+- `@TestConfiguration`
 
 ### 테스트 할 것
 
 - API 문서 만들기
-
   - 요청 본문 문서화
   - 응답 본문 문서화
   - 링크 문서화
@@ -116,11 +122,13 @@ https://github.com/spring-projects/spring-restdocs/blob/v2.0.2.RELEASE/samples/r
 
 ### 요청 필드 문서화
 
+```
 - requestFields() + fieldWithPath()
 - responseFields() + fieldWithPath()
 - requestHeaders() + headerWithName()
 - responseHedaers() + headerWithName()
 - links() + linkWithRel()
+```
 
 ### 테스트 할 것
 

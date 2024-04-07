@@ -26,7 +26,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### JPA 맵핑
 
-- @Table(“Users”)
+- `@Table(“Users”)`
 
 ### JPA enumeration collection mapping
 
@@ -73,7 +73,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ## 예외 테스트
 
-1. @Test(expected)
+1. `@Test(expected)`
 
 예외 타입만 확인 가능
 
@@ -82,7 +82,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 예외 타입과 메시지 확인 가능.
 하지만 코드가 다소 복잡.
 
-3. @Rule ExpectedException
+3. `@Rule ExpectedException`
 
 코드는 간결하면서 예외 타입과 메시지 모두 확인 가능
 
@@ -92,18 +92,18 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### 시큐리티 필터를 적용하기 않음...
 
-- /docs/index.html
+- `/docs/index.html`
 
 ### 로그인 없이 접근 가능
 
-- GET /api/events
-- GET /api/events/{id}
+- GET `/api/events`
+- GET `/api/events/{id}`
 
 ### 로그인 해야 접근 가능
 
 - 나머지 다...
-- POST /api/events
-- PUT /api/events/{id}
+- POST `/api/events`
+- PUT `/api/events/{id}`
 - ...
 
 ### 스프링 시큐리티 OAuth 2.0
@@ -115,6 +115,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### 스프링 시큐리티 설정
 
+```
 - @EnableWebSecurity
 - @EnableGlobalMethodSecurity
 - extends WebSecurityConfigurerAdapter
@@ -131,6 +132,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
     - /docs/\*\*
     - /favicon.ico
 - PathRequest.toStaticResources() 사용하기
+```
 
 <br />
 
@@ -154,7 +156,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 - 폼 인증 방식 활성화
   - 스프링 시큐리티가 기본 로그인 페이지 제공
 - 요청에 인증 적용
-  - /api 이하 모든 GET 요청에 인증이 필요함. (permitAll()을 사용하여 인증이 필요없이 익명으로 접근이 가능케 할 수 있음)
+  - `/api` 이하 모든 GET 요청에 인증이 필요함. (permitAll()을 사용하여 인증이 필요없이 익명으로 접근이 가능케 할 수 있음)
   - 그밖에 모은 요청도 인증이 필요함.
 
 <br />
@@ -172,6 +174,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### 토큰 발행 테스트
 
+```
 - User
 - Client
 - POST /oauth/token
@@ -181,6 +184,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
     - username
     - password
   - 응답에 access_token 나오는지 확인
+```
 
 ### Grant Type: Password
 
@@ -190,6 +194,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### AuthorizationServer 설정
 
+```
 - @EnableAuthorizationServer
 - extends AuthorizationServerConfigurerAdapter
 - configure(AuthorizationServerSecurityConfigurer security)
@@ -207,6 +212,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
   - tokenStore
   - authenticationMaanger
   - userDetailsService
+```
 
 <br />
 
@@ -218,6 +224,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### ResourceServer 설정
 
+```
 - @EnableResourceServer
 - extends ResourceServerConfigurerAdapter
 - configure(ResourceServerSecurityConfigurer resources)
@@ -229,6 +236,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
   - PUT /api/\*\*: authenticated
   - 에러 처리
     - accessDeniedHandler(OAuth2AccessDeniedHandler())
+```
 
 <br />
 
@@ -242,7 +250,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### 외부 설정으로 기본 유저와 클라이언트 정보 빼내기
 
-- @ConfigurationProperties
+- `@ConfigurationProperties`
 
 <br />
 
@@ -250,6 +258,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### 토큰 발급 받기
 
+```
 - POST /oauth/token
 - BASIC authentication 헤더
   - client Id(myApp) + client secret(pass)
@@ -257,14 +266,15 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
   - username: admin@email.com
   - password: admin
   - grant_type: password
+```
 
 ![image](https://user-images.githubusercontent.com/42582516/94319205-1ab60c80-ffc5-11ea-8fa6-9bcce9e4434a.png)
 
 ### 토큰 갱신하기
 
-- POST /oauth/token
+- POST `/oauth/token`
 - BASIC authentication 헤더
-  - client Id(myApp) + client secret(pass)
+  - `client Id(myApp) + client secret(pass)`
 - 요청 본문 폼
   - token: 처음에 발급받았던 refersh 토큰
   - grant_type: refresh_token
@@ -291,7 +301,7 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 - 인증 정보 꺼내는 방법:
   `Authentication authentication = SecurityContextHolder.getContext().getAuthentication();`
 
-### @AuthenticationPrincipal spring.security.User user
+### `@AuthenticationPrincipal spring.security.User user`
 
 - 인증 안한 경우에 null
 - 인증 한 경우에는 username과 authorities 참조 가능
@@ -304,7 +314,9 @@ summary: " 'SpringBoot REST API'의 다섯번째 게시글입니다. "
 
 ### SpEL을 사용하면
 
+```
 - @AuthenticationPrincipa(expression=”account”) `me.whiteship.user.Account`
+```
 
 ```java
 @Target(ElementType.PARAMETER)
@@ -356,6 +368,7 @@ expression = "#this == 'anonymousUser' ? null : account"
     "password" : "{bcrypt}$2a$10$3z/rHmeYsKpoOQR3aUq38OmZjZNsrGfRZxSnmpLfL3lpLxjD5/JZ6",
     "roles" : [ "USER", "ADMIN" ]
   },
+}
 ```
 
 - JsonSerializer`<User>` 구현
@@ -365,12 +378,12 @@ expression = "#this == 'anonymousUser' ? null : account"
 
 ## 깨진 테스트 살펴보기
 
-### EventControllerTests.updateEvent()
+### `EventControllerTests.updateEvent()`
 
 - 깨지는 이유
 - 해결 방법
 
-### EventControllerTests.getEvent()
+### `EventControllerTests.getEvent()`
 
 - 깨지는 이유
 - 해결 방법
@@ -396,11 +409,12 @@ expression = "#this == 'anonymousUser' ? null : account"
 
 ### 스프링 부트 2.2.\* 주요 변화
 
-- JUnit 4 -> JUnit 5
+- `JUnit 4 -> JUnit 5`
 - 스프링 HATEOAS 버전이 올라가면서 스프링 HATEOAS의 API가 바뀌었다.
 
 ### 스프링 HATEOAS
 
+```
 - Resource -> EntityModel
 - Resources -> CollectionModel
 - PagedResrouces -> PagedModel
@@ -408,13 +422,14 @@ expression = "#this == 'anonymousUser' ? null : account"
 - assembler.toResource -> assembler.toModel
 - org.springframework.hateoas.mvc.ControllerLinkBuilder -> org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 - MediaTypes 중에 (UTF8)인코딩이 들어간 상수 제거.
+```
 
 ### JUnit 5
 
-- org.junit -> org.junit.jupiter
-- @Ignore -> @Disabled
-- @Before, @After -> @BeforeEach, @AfterEach
-- @TestDescription (우리가 만든거) -> @DisplayName
+- `org.junit -> org.junit.jupiter`
+- `@Ignore -> @Disabled`
+- `@Before, @After -> @BeforeEach, @AfterEach`
+- `@TestDescription (우리가 만든거) -> @DisplayName`
 
 ### 스프링 MVC 변경
 

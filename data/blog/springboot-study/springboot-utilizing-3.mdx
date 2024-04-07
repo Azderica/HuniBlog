@@ -37,25 +37,27 @@ summary: " 'SpringBoot 활용하기'의 세번째 게시글입니다. "
 
 Spring-JDBC가 클래스패스에 있으면 자동 설정이 필요한 빈을 설정 해줍니다.
 
-- - DataSource
-  - JdbcTemplate
+- DataSource
+- JdbcTemplate
 
 인-메모리 데이터베이스 기본 연결 정보 확인하는 방법
 
+```
 - URL: “testdb”
 - username: “sa”
 - password: “”
+```
 
 H2 콘솔 사용하는 방법
 
 - spring-boot-devtools를 추가하거나...
-- spring.h2.console.enabled=true 만 추가.
-- /h2-console로 접속 (이 path도 바꿀 수 있음)
+- `spring.h2.console.enabled=true` 만 추가.
+- `/h2-console`로 접속 (이 path도 바꿀 수 있음)
 
 실습 코드
 
-- CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))
-- INSERT INTO USER VALUES (1, ‘keesun’)
+- `CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))`
+- `INSERT INTO USER VALUES (1, ‘keesun’)`
 
 ### MySQL
 
@@ -68,9 +70,9 @@ H2 콘솔 사용하는 방법
 
 #### DBCP 설정
 
-- **spring.datasource.hikari.\***
-- spring.datasource.tomcat.\*
-- spring.datasource.dbcp2.\*
+- `**spring.datasource.hikari.\***`
+- `spring.datasource.tomcat.\*`
+- `spring.datasource.dbcp2.\*`
 
 #### MySQL 커넥터 의존성 추가
 
@@ -83,15 +85,19 @@ H2 콘솔 사용하는 방법
 
 #### MySQL 추가 (도커 사용)
 
+```
 - docker run -p 3306:3306 --name **mysql_boot** -e MYSQL_ROOT_PASSWORD=**1** -e MYSQL_DATABASE=**springboot** -e MYSQL_USER=**keesun** -e MYSQL_PASSWORD=**pass** -d mysql
 - docker exec -i -t mysql_boot bash
 - mysql -u root -p
+```
 
 #### MySQL용 Datasource 설정
 
+```
 - spring.datasource.url=jdbc:mysql://localhost:3306/springboot?useSSL=false
 - spring.datasource.username=keesun
 - spring.datasource.password=pass
+```
 
 #### MySQL 접속시 에러
 
@@ -160,8 +166,8 @@ SELECT * FROM account;
 
 - Repository 빈 자동 생성
 - 쿼리 메소드 자동 구현
-- @EnableJpaRepositories(스프링 부트가 자동으로 설정 해줌.)
-- SDJ -> JPA -> Hibernate -> Datasource
+- `@EnableJpaRepositories(스프링 부트가 자동으로 설정 해줌.)`
+- `SDJ -> JPA -> Hibernate -> Datasource`
 
 ### Spring-Data-JPA 연동
 
@@ -169,8 +175,8 @@ SELECT * FROM account;
 
 ```xml
 <dependency>
-   <groupId>org.springframework.boot</groupId>
-   <artifactId>spring-boot-starter-data-jpa</artifactId>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
 ```
 
@@ -188,14 +194,14 @@ SELECT * FROM account;
 
 JPA를 사용한 데이터베이스 초기화
 
-- spring.jpa.hibernate.ddl-auto
-- spring.jpa.generate-dll=true로 설정 해줘야 동작함.
+- `spring.jpa.hibernate.ddl-auto`
+- `spring.jpa.generate-dll=true`로 설정 해줘야 동작함.
 
 SQL 스크립트를 사용한 데이터베이스 초기화
 
-- schema.sql 또는 schema-\${platform}.sql
-- data.sql 또는 data-\${platform}.sql
-- \${platform} 값은 spring.datasource.platform 으로 설정 가능.
+- `schema.sql 또는 schema-\${platform}.sql`
+- `data.sql 또는 data-\${platform}.sql`
+- `\${platform} 값은 spring.datasource.platform 으로 설정 가능.`
 
 ### 데이터베이스 마이그레이션
 
@@ -217,12 +223,12 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
 
 마이그레이션 디렉토리
 
-- db/migration 또는 db/migration/{vendor}
-- spring.flyway.locations로 변경 가능
+- `db/migration` 또는 `db/migration/{vendor}`
+- `spring.flyway.locations`로 변경 가능
 
 마이그레이션 파일 이름
 
-- V숫자\_\_이름.sql
+- `V숫자\_\_이름.sql`
 - V는 꼭 대문자로.
 - 숫자는 순차적으로 (타임스탬프 권장)
 - 숫자와 이름 사이에 언더바 두 개.
@@ -232,6 +238,7 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
 
 캐시, 메시지 브로커, 키/밸류 스토어 등으로 사용 가능.
 
+```
 - 의존성 추가
   - spring-boot-starter-data-redis
 - Redis 설치 및 실행 (도커)
@@ -249,8 +256,8 @@ https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/#howt
   - hgetall {key}
   - hget {key} {column}
 - 커스터마이징
-
   - spring.redis.\*
+```
 
 ### MongoDB
 
@@ -259,15 +266,15 @@ MongoDB는 JSON 기반의 도큐먼트 데이터베이스입니다.
 - 의존성 추가
   - spring-boot-starter-data-mongodb
 - MongoDB 설치 및 실행 (도커)
-  - docker run -p 27017:27017 --name mongo_boot -d mongo
-  - docker exec -i -t mongo_boot bash
+  - `docker run -p 27017:27017 --name mongo_boot -d mongo`
+  - `docker exec -i -t mongo_boot bash`
   - mongo
 - 스프링 데이터 몽고DB
   - MongoTemplate
   - MongoRepository
   - 내장형 MongoDB (테스트용)
     - de.flapdoodle.embed:de.flapdoodle.embed.mongo
-  - @DataMongoTest
+  - `@DataMongoTest`
 
 ### Neo4j
 
@@ -278,19 +285,19 @@ Neo4j는 노드간의 연관 관계를 영속화하는데 유리한 그래프 �
 
 ```xml
 <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter</artifactId>
+</dependency>
 ```
 
 - Neo4j 설치 및 실행 (도커)
-  - docker run -p 7474:7474 -p 7687:7687 -d --name noe4j_boot neo4j
-  - http://localhost:7474/browser
+  - `docker run -p 7474:7474 -p 7687:7687 -d --name noe4j_boot neo4j`
+  - `http://localhost:7474/browser`
 - 스프링 데이터 Neo4J
   - Neo4jTemplate (Deprecated)
   - SessionFactory
   - Neo4jRepository
-- 에러 발생하는 데, 참고할 링크 : https://www.inflearn.com/questions/6023
+- 에러 발생하는 데, 참고할 링크 : `https://www.inflearn.com/questions/6023`
 
 ### 정리
 
