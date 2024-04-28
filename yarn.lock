@@ -3741,7 +3741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.13":
+"autoprefixer@npm:^10.4.19":
   version: 10.4.19
   resolution: "autoprefixer@npm:10.4.19"
   dependencies:
@@ -5092,14 +5092,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^8.8.0":
-  version: 8.10.0
-  resolution: "eslint-config-prettier@npm:8.10.0"
+"eslint-config-prettier@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "eslint-config-prettier@npm:9.1.0"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: 153266badd477e49b0759816246b2132f1dbdb6c7f313ca60a9af5822fd1071c2bc5684a3720d78b725452bbac04bb130878b2513aea5e72b1b792de5a69fec8
+  checksum: 9229b768c879f500ee54ca05925f31b0c0bafff3d9f5521f98ff05127356de78c81deb9365c86a5ec4efa990cb72b74df8612ae15965b14136044c73e1f6a907
   languageName: node
   linkType: hard
 
@@ -9113,7 +9113,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.23, postcss@npm:^8.4.24":
+"postcss@npm:^8.4.23, postcss@npm:^8.4.38":
   version: 8.4.38
   resolution: "postcss@npm:8.4.38"
   dependencies:
@@ -9140,9 +9140,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.5.11":
-  version: 0.5.13
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.13"
+"prettier-plugin-tailwindcss@npm:^0.5.14":
+  version: 0.5.14
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.14"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
@@ -9191,11 +9191,11 @@ __metadata:
       optional: true
     prettier-plugin-svelte:
       optional: true
-  checksum: f79a6353c813f871c7f5c2d7bbbe77d8e1477fc448ec20d337688659c8ffb454dda1d841b92cb809d171d6128e4dd55acfd02a945bca7d0aa3eb02411a5cd439
+  checksum: 205a774e53cdd9f8e61640ae3b778402758fad3d215fc57dd31172f12cf2b145095f5f973a431d495a6551b638bbb7e54c9f3a49848f0a0f755f5ad975b7c321
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.0":
+"prettier@npm:^3.2.5":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:
@@ -10740,13 +10740,13 @@ __metadata:
     "@types/react": ^18.2.73
     "@typescript-eslint/eslint-plugin": ^6.1.0
     "@typescript-eslint/parser": ^6.1.0
-    autoprefixer: ^10.4.13
+    autoprefixer: ^10.4.19
     contentlayer2: 0.4.4
     cross-env: ^7.0.3
     esbuild: 0.20.2
     eslint: ^8.45.0
     eslint-config-next: 14.1.0
-    eslint-config-prettier: ^8.8.0
+    eslint-config-prettier: ^9.1.0
     eslint-plugin-prettier: ^5.0.0
     github-slugger: ^2.0.0
     gray-matter: ^4.0.2
@@ -10757,9 +10757,9 @@ __metadata:
     next-contentlayer2: 0.4.4
     next-themes: ^0.3.0
     pliny: 0.2.0
-    postcss: ^8.4.24
-    prettier: ^3.0.0
-    prettier-plugin-tailwindcss: ^0.5.11
+    postcss: ^8.4.38
+    prettier: ^3.2.5
+    prettier-plugin-tailwindcss: ^0.5.14
     react: 18.2.0
     react-dom: 18.2.0
     reading-time: 1.5.0

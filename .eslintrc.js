@@ -15,6 +15,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
     'next',
+    'prettier',
     'next/core-web-vitals',
   ],
   parserOptions: {
