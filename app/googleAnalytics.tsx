@@ -7,8 +7,8 @@ const GoogleAnalytics = ({ ga_id }: { ga_id: string }) => (
       src={`https://www.googletagmanager.com/gtag/js? 
       id=${ga_id}`}
     ></Script>
-    <Script 
-      async 
+    <Script
+      async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1759762070891290`}
       crossOrigin="anonymous"
     ></Script>
